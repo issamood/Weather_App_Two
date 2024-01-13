@@ -1,0 +1,57 @@
+:root {
+    --white: #ffffff;
+
+}
+
+body,
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--white);
+    background-color: #0093E9;
+    background-image: linear-gradient(0deg, #0093E9 0%, #80D0C7 100%);
+    
+}
+
+/* Wrapper container for the entire window*/
+.wrapper {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr minmax(0px, 768px) 1fr;
+    grid-template-rows: 100px auto 1fr 70px;
+    grid-template-areas:
+        'navbar navbar navbar'
+        '. info .'
+        '. main .'
+        'footer footer footer';
+}
+
+.nav-bar{
+    grid-area: navbar;
+    display: grid;
+    grid-template-areas: 'logo searchbar unitChoices';
+    align-items: center;
+    grid-template-columns: 1fr 360px 1fr;
+    padding: 0 32px;
+    margin: 32px 0 16px;
+}
+
+.logo{
+    grid-area: logo;
+}
+
+.searchBar{
+    grid-area: searchBar;
+}
+
+.unitChoices{
+    grid-area: unitChoices;
+}
