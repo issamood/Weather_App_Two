@@ -1,42 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App Two</title>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Wrapper div element -->
     <div class="wrapper">
-        <!-- Navigation Bar element -->
-        <nav class="navbar">
-            <!-- Logo Text  -->
-            <h1><a href="/">Weather App</a></h1>
-            <!-- Searchbar Form  -->
-            <form class="search-bar" action="#" method="get">
-                <input type="search" class="search-text" name="" id="" placeholder="Search Location" autocomplete="off">
-                <button class="search-submit" type="submit">🔍</button>
-            </form>
-            <div class="unitChoices">
-                <button class="unitImperial">°F, mph</button>
-                <button class="unitMetric">°C, m/s</button>
-            </div>
-        </nav>
-        <!-- Information Div element  -->
-        <div class="info">
-            <div class="loading hide"></div>
+      <!-- Navigation Bar element -->
+      <nav class="navbar">
+        <!-- Logo Text  -->
+        <h1><a href="/">Weather App</a></h1>
+        <!-- Searchbar Form  -->
+        <form class="search-bar" action="#" method="get">
+          <input
+            type="search"
+            class="search-text"
+            name=""
+            id=""
+            placeholder="Search Location"
+            autocomplete="off"
+          />
+          <button class="search-submit" type="submit">🔍</button>
+        </form>
+        <!-- Unit choice buttons  -->
+        <div class="unitChoices">
+          <button class="unitImperial">°F, mph</button>
+          <button class="unitMetric">°C, m/s</button>
         </div>
-        <!-- Main Container  -->
-        <main class="main-container hide">
-            <!-- All the content  -->
-        </main>
-        <footer class="footer">
-            <p>Made by <a href="" target="_blank">issamood</a></p>
-        </footer>
+      </nav>
+      <!-- Information Div element  -->
+      <div class="info">
+        <div class="loading hide"></div>
+      </div>
+      <!-- Main Container  -->
+      <main class="main-container hide">
+        <!-- All the content  -->
+
+        <!-- header section  -->
+        <section class="section-heading">
+          <h2>
+            <span class="header-town"></span
+            ><span class="header-country"></span>
+          </h2>
+          <p class="header-date header-time"></p>
+        </section>
+
+        <!-- weather section  -->
+        <section class="section-weather">
+          <div class="weather-div">
+            <span class="weather-icon"></span><span class="weather-temp"></span>
+            <span class="weather-desc">
+              <span class="desc-weather"></span
+              ><span class="desc-tempfeel"></span
+              ><span class="desc-windfeel"></span>
+            </span>
+          </div>
+        </section>
+
+        <!-- detail section  -->
+        <section class="section-details">
+          <div class="details">
+            <!-- wind speed and direction  -->
+            <p class="details-title">Wind</p>
+            <p class="details-data">
+              <span class="data-wind-direction"></span
+              ><span class="data-wind-speed"></span>
+              <span class="data-wind-unit"></span>
+            </p>
+          </div>
+          <div class="details">
+            <!-- humiditity  -->
+            <p class="details-title">Humidity</p>
+            <p class="details-data"><span class="data-humidity"></span>%</p>
+          </div>
+          <div class="details">
+            <!-- uv index  -->
+            <p class="details-title">UV Index</p>
+            <p class="details-data">
+              <span class="data-uvindex"></span>
+            </p>
+          </div>
+          <div class="details">
+            <!-- visibility  -->
+            <p class="details-title">Visibility</p>
+            <p class="details-data">
+              <span class="data-visibility"></span
+              ><span class="data-visiblity-unit"></span>
+            </p>
+          </div>
+          <div class="details">
+            <!-- cloudiness  -->
+            <p class="details-title">Cloudiness</p>
+            <p class="details-data"><span class="data-cloudiness"></span>%</p>
+          </div>
+          <div class="details">
+            <!-- chance of rain -->
+            <p class="details-title">Chance of rain</p>
+            <p class="details-data"><span class="data-chanceofrain"></span>%</p>
+          </div>
+          <div class="details">
+            <!-- sunrise time  -->
+            <p class="details-title">Sunrise</p>
+            <p class="details-data">
+              <span class="data-sunrise"></span>
+            </p>
+          </div>
+          <div class="details">
+            <!-- sunset time  -->
+            <p class="details-title">Sunset</p>
+            <p class="details-data">
+              <span class="data-sunset"></span>
+            </p>
+          </div>
+          <div class="details">
+            <!-- moon details  -->
+            <p class="details-title">Waxing Crescent</p>
+            <p class="details-data">
+              <span class="data-waxingcrescent"></span>
+            </p>
+          </div>
+        </section>
+
+        <!-- daily section aka weekly forecast  -->
+        <section class="section-daily">
+          <h3 class="daily-header">Weekly Forecast</h3>
+          <div class="daily-list">
+            <!-- Create using JS -->
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="creator">Made by issamood @ GitHub</p>
+      </footer>
     </div>
-</body>
+  </body>
 </html>
