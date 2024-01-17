@@ -1,6 +1,6 @@
 import { addSeconds, fromUnixTime } from "date-fns";
 
-const apiFunctions = (() => {
+const apiFunctions = () => {
   //weather api
   const API_KEY = "a03547c4f30c166e114f29862a6a5444";
 
@@ -49,14 +49,46 @@ const apiFunctions = (() => {
     });
     const { locationData, coordinateData, forecastData, units } = data;
 
-    // remove this after (checking to see wtf coordinateData is)
+    // remove this after (checking to see coordinateData is)
     console.log(locationData);
     console.log(coordinateData);
     console.log(forecastData);
 
+    //Get and format data
+    const currentDate = new Date(coordinateData.dt * 1000);
+    const sunriseTime = new Date(coordinateData.sys.sunrise * 1000);
+    const sunsetTime = new Date(coordinateData.sys.sunset * 1000);
+
+    const dateOptions = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const timeOptions = { hour: "2-digit", minute: "2-digit" };
+    const formattedCurrentDate = currentDate.toLocaleDateString(
+      "en-US",
+      dateOptions
+    );
+    const formattedCurrentTime = currentDate.toLocaleTimeString(
+      "en-US",
+      timeOptions
+    );
+    const combinedCurrentDate = `${formattedCurrentDate} | ${formattedCurrentTime}`;
+
+    const formattedSunriseTime = sunriseTime.toLocaleTimeString(
+      "en-US",
+      timeOptions
+    );
+    const formattedSunsetTime = sunsetTime.toLocaleTimeString(
+      "en-US",
+      timeOptions
+    );
+
     const extractedData = {
       city: locationData.name,
       country: englishRegionNames.of(locationData.sys.country),
+      date: combinedCurrentDate,
       units,
       current: {
         temp: Math.round(coordinateData.main.temp),
@@ -67,39 +99,15 @@ const apiFunctions = (() => {
         windSpeed: coordinateData.wind.speed,
         windDegree: coordinateData.wind.deg,
         tempDescription: coordinateData.weather[0].icon,
-        sunrise: addSeconds(
-          fromUnixTime(coordinateData.sys.sunrise),
-          coordinateData.timezone_offset + new Date().getTimezoneOffset() * 60
-        ),
-        sunset: addSeconds(
-          fromUnixTime(coordinateData.sys.sunset),
-          coordinateData.timezone_offset + new Date().getTimezoneOffset() * 60
-        ),
+        sunrise: formattedSunriseTime,
+        sunset: formattedSunsetTime,
       },
       daily: [],
     };
 
-    //Process data for daily information
-    // extractedData.daily = coordinateData.daily
-    //   .slice(1, 8)
-    //   .map((dailyForecast) => ({
-    //     date: addSeconds(
-    //       fromUnixTime(dailyForecast.dt),
-    //       coordinateData.timezone_offset
-    //     ),
-    //     icon: dailyForecast.weather[0].icon,
-    //     tempDescription: dailyForecast.weather[0].description,
-    //     dayTemp: Math.round(dailyForecast.temp.day),
-    //     nightTemp: Math.round(dailyForecast.temp.night),
-    //     windDegree: dailyForecast.wind_deg,
-    //     windSpeed: dailyForecast.wind_speed,
-    //   }));
-
-
-    // Have to fix this 
-    for (let i = 0; i < 39; i + 8) {
-      extractedData.daily[i].push(() => {
-        date: addSeconds( 
+    for (let i = 0; i < 39; i += 8) {
+      extractedData.daily.push({
+        date: addSeconds(
           fromUnixTime(forecastData.list[i].dt),
           coordinateData.timezone_offset
         ),
@@ -111,11 +119,13 @@ const apiFunctions = (() => {
         windSpeed: forecastData.list[i].wind.speed,
       });
     }
+
+    return extractedData;
   }
 
   return {
     getLocationData,
   };
-})();
+};
 
 export default apiFunctions;

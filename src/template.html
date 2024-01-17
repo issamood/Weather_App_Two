@@ -17,7 +17,7 @@
       <!-- Navigation Bar element -->
       <nav class="navbar">
         <!-- Logo Text  -->
-        <h1><a href="/">Weather App</a></h1>
+        <a href="#" class="logo">Weather App</a>
         <!-- Searchbar Form  -->
         <form class="search-bar" action="#" method="get">
           <input
@@ -31,37 +31,43 @@
           <button class="search-submit" type="submit">🔍</button>
         </form>
         <!-- Unit choice buttons  -->
-        <div class="unitChoices">
+        <div class="unit-choices">
           <button class="unitImperial">°F, mph</button>
-          <button class="unitMetric">°C, m/s</button>
+          <button class="unitMetric">°C, kmph</button>
         </div>
       </nav>
       <!-- Information Div element  -->
-      <div class="info">
-        <div class="loading hide"></div>
+      <div class="info hide">
+        <div class="loading"></div>
       </div>
       <!-- Main Container  -->
-      <main class="main-container hide">
+      <main class="main-container">
         <!-- All the content  -->
 
         <!-- header section  -->
         <section class="section-heading">
           <h2>
-            <span class="header-town"></span
-            ><span class="header-country"></span>
+            <span class="header-town">Wilmington, </span
+            ><span class="header-country">United States</span>
           </h2>
-          <p class="header-date header-time"></p>
+          <p class="location-details header-time"></p>
         </section>
 
         <!-- weather section  -->
         <section class="section-weather">
           <div class="weather-div">
-            <span class="weather-icon"></span><span class="weather-temp"></span>
-            <span class="weather-desc">
-              <span class="desc-weather"></span
-              ><span class="desc-tempfeel"></span
-              ><span class="desc-windfeel"></span>
+            <span class="weather-icon"></span>
+            <span class="dig-data">
+              <span class="weather-temp"></span><span class="unit-temp"></span>
             </span>
+          </div>
+          <div>
+            <p class="weather-desc data-temp-desc"></p>
+            <p class="weather-details">
+              Feels like <span class="desc-tempfeel"></span
+              ><span class="unit-temp"></span>
+            </p>
+            <p class="weather-details data-wind-desc">Strong breeze</p>
           </div>
         </section>
 
@@ -71,7 +77,7 @@
             <!-- wind speed and direction  -->
             <p class="details-title">Wind</p>
             <p class="details-data">
-              <span class="data-wind-direction"></span
+              <span class="data-wind-degree"></span
               ><span class="data-wind-speed"></span>
               <span class="data-wind-unit"></span>
             </p>

@@ -13,7 +13,7 @@ h3 {
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  font-size: 32px;
+  font-size: 20px;
   color: var(--white);
   background-image: linear-gradient(to top, #3da1c3 0%, #255198 100%);
 }
@@ -21,47 +21,53 @@ body {
 /* Wrapper container for the entire window*/
 .wrapper {
   display: grid;
-  height: 100vh;
-  width: 100vw;
-  grid-template-columns: 1fr minmax(0px, 768px) 1fr;
-  grid-template-rows: 100px auto 1fr 70px;
+  min-height: 100vh;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 0px auto 70px;
   grid-template-areas:
-    "navbar navbar navbar"
-    ". info ."
+    "header header header"
+    ". info . "
     ". main ."
     "footer footer footer";
 }
 
-.nav-bar {
-  grid-area: navbar;
+.navbar {
+  grid-area: header;
   display: grid;
-  grid-template-areas: "logo searchbar unitChoices";
   align-items: center;
   grid-template-columns: 1fr 360px 1fr;
-  padding: 0 32px;
-  margin: 32px 0 16px;
+  grid-template-rows: auto 40px auto;
+  grid-template-areas:
+    ". logo ."
+    ". search ."
+    ". settings .";
 }
 
-.logo {
-  grid-area: logo;
+.info {
+  grid-area: info;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h1 a {
+.main-container {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, minmax(min-content, max-content));
+  grid-template-areas:
+    "title"
+    "weather"
+    "details"
+    "daily";
   color: var(--white);
-  text-decoration: none;
-  text-wrap: nowrap;
+  justify-items: center;
 }
 
-p {
-  font-size: 20px;
-}
-
-.searchBar {
-  grid-area: searchBar;
-}
-
-.unitChoices {
-  grid-area: unitChoices;
+.section-daily {
+  grid-area: daily;
+  width: 100%;
+  max-width: 480px;
 }
 
 .footer {
@@ -69,4 +75,68 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo {
+  grid-area: logo;
+  text-wrap: nowrap;
+  text-decoration: none;
+  color: var(--white);
+  font-size: 40px;
+  text-align: center;
+}
+
+.search-bar {
+  grid-area: search;
+  justify-self: center;
+  height: 41px;
+}
+
+.unit-choices {
+  grid-area: settings;
+  justify-self: center;
+}
+
+.loading {
+  background-image: url("../assets/SVG/my-loader.svg");
+}
+
+.section-heading {
+  grid-area: title;
+  text-align: center;
+}
+
+.section-weather {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.weather-div {
+  display: flex;
+  align-items: center;
+}
+
+.weather-icon {
+  margin-right: 16px;
+}
+
+.section-details {
+  text-align: center;
+  grid-area: details;
+  gap: 32px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.creator {
+  font-size: 16px;
 }

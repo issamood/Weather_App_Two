@@ -32,11 +32,14 @@ const loadApp = async function fetchThenRenderUsingDom(
   input = "Wilmington",
   unit = "imperial"
 ) {
-  // domFunctions.loadingIcon("currentlyLoading");
-  const weatherDataObject = await apiFunctions.getLocationData(input, unit);
+  const { loadingIcon } = domFunctions();
+  loadingIcon("currentlyLoading");
+  const { getLocationData } = apiFunctions();
+  const weatherDataObject = await getLocationData(input, unit);
   console.log(weatherDataObject);
-  // domFunctions.renderApp(weatherDataObject);
-  // domFunctions.loading("finishedLoading");
+  //Add renderApp DOM function here
+
+  loadingIcon("finishedLoading");
 };
 
 //Logic
